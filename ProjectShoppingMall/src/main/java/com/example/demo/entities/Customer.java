@@ -1,23 +1,24 @@
-
 package com.example.demo.entities;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
 @Entity
-public class ShopOwner {
+@Table(name = "customer")
+public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private LocalDate dob;
-	private String address;
-	@OneToOne(mappedBy = "shopOwner",cascade = CascadeType.ALL)
-	private Shop shop;
-	
+	@OneToOne
+	@JoinColumn(name = "customer_id",referencedColumnName = "id")
+	private OrderDetails orderDetails;
+	private String phone;
+	private String email;
+
 }

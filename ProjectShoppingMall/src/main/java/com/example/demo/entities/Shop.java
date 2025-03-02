@@ -27,4 +27,5 @@ public class Shop {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "shopEmployeeID",referencedColumnName = "id")
 	private Employee employee;
+	
 }
